@@ -75,7 +75,9 @@ class DateNightTest < Minitest::Test
   end
 
   def test_depth_of
+    assert_equal 0, @tree.depth_of(50)
     assert_equal 1, @tree.depth_of(60)
+    assert_equal 2, @tree.depth_of(99)
   end
 
 
@@ -96,7 +98,16 @@ class DateNightTest < Minitest::Test
   end
 
   def test_sort
-    @tree.sort
+    tree = BinarySearchTree.new
+    tree.insert(50, "Movie")
+    tree.insert(60, "Nice Movie")
+    tree.insert(20, "Crappy Movie")
+    tree.insert(99, "Fiddler on the Roof")
+    tree_sorted = tree.sort
+    assert_equal  [{"Crappy Movie" =>20},
+   {"Moview"=>50},
+   {"Nice Movie"=>60},
+  {"Fiddler on the Roof"=>99}], tree_sorted
   end
 
   def test_health
@@ -107,6 +118,7 @@ class DateNightTest < Minitest::Test
 
   def test_is_leaf?
     assert @tree.node.right.right.is_leaf?
+    refute @tree.node.right.is_leaf?
   end
 
   def test_leaves
