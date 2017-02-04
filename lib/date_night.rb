@@ -2,6 +2,9 @@ require 'pry'
 
 require_relative 'node'
 
+#make file BinarySearchTree., Make a date_night.rb
+#whenever you're just reading @node, delete the @, you 
+#have an attr_reader 
 class BinarySearchTree
   attr_reader :node, :left, :right
 
@@ -10,23 +13,23 @@ class BinarySearchTree
   end
 
   def insert(rating, title)
-    if @node.nil?
-      @node = Node.new(rating, title)
+    if @node.nil? # delete @  #EXPLAIN ME WHY
+      @node = Node.new(rating, title)  #keep @ #EXPLAIN ME WHY: b/c I don't have attr_accessor?
     else
-      @node.insert(rating, title)
+      @node.insert(rating, title) # delete @ #EXPLAIN ME WHY
     end
     depth_of(rating)
   end
   
   def include?(rating)
     if rating == node.rating
-      return true
+      # return true
     else 
       node.include?(rating)
     end
   end
   
-  
+#  rating == node.rating ? ture: node.include?(rating)
 
   def depth_of(rating)
     return nil if include?(rating) == false
@@ -40,6 +43,7 @@ class BinarySearchTree
 
   def max
     max = {}
+
     if node.right.nil?
       max[@rating] = @title
       max
@@ -67,6 +71,7 @@ class BinarySearchTree
     movie = {}
     @sorted << movie[@title] = @score
     current_node = node
+    binding.pry
 
     if node.left.nil? && (sorted include?(node.rating) == false)
       movie = {node.title => node.rating}
@@ -88,6 +93,8 @@ class BinarySearchTree
   def traverse
   end
 
+#min, use min and max 
+
 
   def load(file)
     movies = File.open(file, 'r')
@@ -97,9 +104,15 @@ class BinarySearchTree
       line = line.split(", ")
       pulled_rating = line[0].to_i
       pulled_title = line[1]
+      binding.pry
       self.insert(pulled_rating, pulled_title)
+      #self is implied already, you can delete
     end
   end
+
+
+# private method extract
+#self.insert(extract_rating, 
 
 end
 

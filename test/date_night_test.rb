@@ -4,6 +4,8 @@ require './lib/date_night'
 require 'minitest/pride'
 require './lib/node'
 
+##Split into BinarySearchTree test file, and Node test file
+
 
 class DateNightTest < Minitest::Test
   def setup
@@ -51,6 +53,7 @@ class DateNightTest < Minitest::Test
 
 
 #BinarySearchTree Tests
+#break
 
   def test_does_BinarySearchTree_exist
     assert @tree
@@ -105,9 +108,9 @@ class DateNightTest < Minitest::Test
     tree.insert(99, "Fiddler on the Roof")
     tree_sorted = tree.sort
     assert_equal  [{"Crappy Movie" =>20},
-   {"Moview"=>50},
-   {"Nice Movie"=>60},
-  {"Fiddler on the Roof"=>99}], tree_sorted
+    {"Moview"=>50},
+    {"Nice Movie"=>60},
+    {"Fiddler on the Roof"=>99}], tree_sorted
   end
 
   def test_health

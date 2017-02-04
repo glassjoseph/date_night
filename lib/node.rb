@@ -1,6 +1,6 @@
 class Node
  attr_accessor :rating, :title, :left, :right, :depth
-  def initialize(rating, title, depth= 0)
+  def initialize(rating, title, depth = 0)
     @rating = rating
     @title = title
     @left = nil
@@ -24,11 +24,21 @@ class Node
     end
   end
 
+#insert
+#you're doing the same thing over and over
+#do it once, then call it on left and right.insert_node
+
+private
+
+def insert_node()
+  node
+
+end
+
+
 
   def include?(compare_rating)
-    if compare_rating == self.rating
-      return true
-    end
+    return true if compare_rating == rating
     if compare_rating < rating
       if left.nil? == false
         left.include?(compare_rating)
@@ -38,12 +48,16 @@ class Node
     elsif compare_rating > rating
       if right.nil? == false
         right.include?(compare_rating)
-
       else
         false
       end
     end
   end
+
+#extract into private method
+#patterns - make them
+
+
 
   def depth_of(compare_rating)
 
@@ -114,6 +128,7 @@ class Node
     return @sorted
   end
   
+  #delete and restart
 
 end
 
